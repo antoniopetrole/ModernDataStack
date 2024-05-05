@@ -12,11 +12,15 @@ def transfer_table(table):
 
     cur.execute("SELECT * FROM " + table)
 
-    df = pd.DataFrame(cur.fetchall())
+    columns = [col[0] for col in cur.description]
 
+    df = pd.DataFrame(cur.fetchall(), columns=columns)
+    
     engine = create_engine('postgresql://admin:password@localhost:5432/edw')
     df.to_sql(table, con=engine, if_exists='replace', index=False) 
 
     cur.close()
     mysqlConn.close()
-    engine.dispose()
+    engine.dispose() 
+
+transfer_table('customers')
