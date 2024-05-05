@@ -1,5 +1,9 @@
 # ModernDataStack
-Implementing a OLAP use case using modern data tools
+Implementing a OLAP use case using modern data tools. The dataset we'll be transforming is a simple retail style dataset that can be found here https://www.mysqltutorial.org/getting-started-with-mysql/mysql-sample-database/
+
+# Prerequisites
+These instructions assume you're running on OSX
+1. Install mysql and pkg-config to satisfy the requirement for the Python mysql library `brew install mysql pkg-config`
 
 # How to run this project
 It's strongly encouraged that you use some sort of python virtual environment like venv, virtualenv, or poetry to keep your dependencies isolated from the rest of your system. In my case I used the python standard library venv. 
@@ -21,3 +25,6 @@ Similar to Postgres, you'll need either the mysql cli tool installed on your loc
 
 If running from your local machine, just run the following command and enter the password prompt. The password is 'password'
 `mysql -h 127.0.0.1 -u root -p mysql`
+
+# TODO 
+- Performance testing on buffered vs unbuffered cursor vs operator
