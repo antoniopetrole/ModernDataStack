@@ -14,7 +14,9 @@ from airflow.operators.python import PythonOperator
 import mysql.connector 
 import pandas as pd
 from sqlalchemy import create_engine
-
+from datetime import datetime
+from sqlalchemy.types import TEXT 
+from collections import defaultdict
 
 def transfer_table(table):
     mysqlConn = mysql.connector.connect(host="127.0.0.1",    # your host, usually localhost
@@ -26,16 +28,22 @@ def transfer_table(table):
 
     cur.execute("SELECT * FROM " + table)
 
-    columns = [col[0] for col in cur.description]
+    columns = [col[0].lower() for col in cur.description]
 
     df = pd.DataFrame(cur.fetchall(), columns=columns)
+
+    dtypedict = {}
+    for i,j in zip(df.columns, df.dtypes):
+        dtypedict.update({i: TEXT})
+
+    df["loaded_timestamp"] = datetime.now()
     
     engine = create_engine('postgresql://admin:password@localhost:5432/edw')
-    df.to_sql(table, con=engine, if_exists='replace', index=False) 
+    df.to_sql(table, schema='raw', con=engine, if_exists='replace', index=False, dtype = dtypedict) 
 
     cur.close()
     mysqlConn.close()
-    engine.dispose()  
+    engine.dispose() 
 
 ##################################################
 ###### END IMPLEMENTATION                   ######
@@ -67,7 +75,7 @@ with DAG(
         # 'trigger_rule': 'all_success'
     },
     description="A simple DAG for extracting data from MySQL and loading it into Postgres",
-    schedule=timedelta(minutes=1),
+    schedule=timedelta(minutes=5),
     start_date=datetime(2024, 4, 30),
     catchup=False,
     tags=["example"],

@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: products_merge
+    columns: 
+      - name: 'productCode'
+        tests:
+          - unique
+          - not_null
+      # This creates a failing test as an example
+      # - name: htmldescription
+      #   tests:
+      #     - not_null
