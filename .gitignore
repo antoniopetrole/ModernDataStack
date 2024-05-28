@@ -162,3 +162,4 @@ cython_debug/
 # Log file
 nohup.out
 .idea/
+data_generator

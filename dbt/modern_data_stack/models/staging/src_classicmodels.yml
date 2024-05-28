@@ -19,3 +19,4 @@ sources:
       - name: orders
       - name: orderdetails
       - name: payments
+      - name: offices

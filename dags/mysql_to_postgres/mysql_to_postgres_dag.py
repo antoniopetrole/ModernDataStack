@@ -39,7 +39,10 @@ def transfer_table(table):
     df["loaded_timestamp"] = datetime.now()
     
     engine = create_engine('postgresql://admin:password@localhost:5432/edw')
-    df.to_sql(table, schema='raw', con=engine, if_exists='replace', index=False, dtype = dtypedict) 
+
+    conn = engine.connect()
+    conn.execute("TRUNCATE TABLE raw." + table)
+    df.to_sql(table, schema='raw', if_exists='append', con=engine, index=False, dtype = dtypedict) 
 
     cur.close()
     mysqlConn.close()

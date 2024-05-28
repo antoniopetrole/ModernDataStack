@@ -3,7 +3,7 @@ version: 2
 models:
   - name: products_merge
     columns: 
-      - name: 'productCode'
+      - name: 'product_code'
         tests:
           - unique
           - not_null

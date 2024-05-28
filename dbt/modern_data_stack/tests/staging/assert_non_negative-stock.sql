@@ -2,5 +2,5 @@ with products as (
     SELECT * FROM {{ref('products_merge')}}
 )
 
-SELECT productcode FROM products 
-WHERE quantityInStock::int < 0
+SELECT product_code FROM products 
+WHERE quantity_in_stock < 0
