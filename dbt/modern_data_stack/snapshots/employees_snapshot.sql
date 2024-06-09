@@ -2,13 +2,13 @@
 
 {{
     config(
-        target_schema='prod',
-        unique_key='employee_number',
+        target_schema='dbt_prod',
+        unique_key='sales_rep_employee_number',
         strategy='check',
         check_cols='all'
     )
 }}
 
-select {{ dbt_utils.generate_surrogate_key(['employee_number']) }} as employee_key, * from {{ ref('employees_merge') }}
+select {{ dbt_utils.generate_surrogate_key(['sales_rep_employee_number']) }} as sales_rep_employee_key, * from {{ ref('employees_stg') }}
 
 {% endsnapshot %}
