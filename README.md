@@ -27,4 +27,7 @@ If running from your local machine, just run the following command and enter the
 `mysql -h 127.0.0.1 -u root -p mysql`
 
 # TODO 
-- Performance testing on buffered vs unbuffered cursor vs operator
+- Add date surrogate smart keys and populate date dimension with it
+- Order line fact vs order line header modeling
+- Possibly remove hash SK's with MIISK's
+- Generate data models from source and target
