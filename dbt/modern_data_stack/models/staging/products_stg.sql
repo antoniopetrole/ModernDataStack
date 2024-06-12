@@ -1,5 +1,5 @@
 SELECT
-pr."productCode"::varchar(8) AS product_code,
+pr."productCode"::varchar(50) AS product_code,
 pr."productName"::varchar(70) AS product_name,
 pr."productLine"::varchar(50) AS product_line,
 pr."productScale"::varchar(10) AS product_scale,
@@ -12,4 +12,4 @@ pl."textDescription" AS text_description,
 pl."htmlDescription" AS html_description,
 pl."image"
 FROM {{source("classic_models","products")}} pr
-INNER JOIN {{source("classic_models","productlines")}} pl ON (pr."productLine" = pl."productLine")
+LEFT JOIN {{source("classic_models","productlines")}} pl ON (pr."productLine" = pl."productLine")

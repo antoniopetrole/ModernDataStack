@@ -4,13 +4,6 @@ sources:
     database: edw
     schema: raw 
     loaded_at_field: loaded_timestamp
-    freshness:
-      warn_after: 
-        count: 1
-        period: minute
-      error_after:
-        count: 2
-        period: minute
     tables:
       - name: products
       - name: productlines

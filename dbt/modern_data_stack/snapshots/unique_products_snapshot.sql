@@ -1,11 +1,11 @@
-{% snapshot products_dim %}
+{% snapshot unique_products_dim %}
 
 {{
     config(
         target_schema='dbt_prod',
         unique_key='product_code',
         strategy='check',
-        check_cols='all'
+        check_cols=['product_name','product_line','product_scale','product_vendor','product_description','quantity_in_stock','buy_price','msrp','text_description','html_description','image']
     )
 }}
 

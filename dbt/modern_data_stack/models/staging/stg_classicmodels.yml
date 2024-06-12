@@ -7,3 +7,15 @@ models:
         tests:
           - unique
           - not_null
+  - name: sales_rep_stg
+    columns: 
+      - name: 'sales_rep_employee_number'
+        tests:
+          - unique
+          - not_null
+  - name: customers_stg
+    columns: 
+      - name: 'customer_number'
+        tests:
+          - unique
+          - not_null

@@ -16,5 +16,5 @@ o."country"::varchar(50),
 o."postalCode"::varchar(15) AS postal_code,
 o."territory"::varchar(10)
 FROM {{source('classic_models','employees')}} e
-INNER JOIN {{source('classic_models','offices')}} o ON (e."officeCode" = o."officeCode")
+LEFT JOIN {{source('classic_models','offices')}} o ON (e."officeCode" = o."officeCode")
 
