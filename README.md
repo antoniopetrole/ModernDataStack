@@ -8,8 +8,8 @@ These instructions assume you're running on OSX
 # How to run this project
 It's strongly encouraged that you use some sort of python virtual environment like venv, virtualenv, or poetry to keep your dependencies isolated from the rest of your system. In my case I used the python standard library venv. 
 
-1. Install and run Apache Airflow on your local machine. This instance of Airflow will be communicating to the rest of our services which will be hosted in Docker containers. You can follow the quick start guide found here https://airflow.apache.org/docs/apache-airflow/stable/start.html
-2. From the root of this project, run `docker compose up -d` to run all of the dependent docker services. 
+1. To start Airflow, cd into the ./setup_files/airflow directory and run `docker compose build` followed by `docker compose up airflow-init` and finally `docker compose up`. To access the Airflow Web UI go to 0.0.0.0:8080, username and password are both "airflow".
+2. From the root of this project, run `docker compose up -d` to run the Postgres and MySQL instances. 
 
 # To access Apache Airflow
 1. Once installed, just go to localhost:8080 on your local machine

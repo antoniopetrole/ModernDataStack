@@ -164,3 +164,4 @@ nohup.out
 .idea/
 data_generator
 etl.sql
+.DS_STORE
