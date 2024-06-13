@@ -1,4 +1,4 @@
-{% snapshot unique_sales_rep_dim %}
+{% snapshot edw_sales_rep_dim %}
 
 {{
     config(

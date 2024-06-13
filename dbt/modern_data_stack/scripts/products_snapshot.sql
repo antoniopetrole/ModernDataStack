@@ -1,4 +1,4 @@
-{% snapshot products_dim %}
+{% snapshot products_difff %}
 
 {{
     config(

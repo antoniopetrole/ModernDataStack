@@ -1,0 +1,1 @@
+select {{ dbt_utils.generate_surrogate_key(['product_code']) }} as product_key, * from {{ ref('products_stg') }}

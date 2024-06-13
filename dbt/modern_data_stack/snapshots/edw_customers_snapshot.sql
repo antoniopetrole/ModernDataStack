@@ -1,4 +1,4 @@
-{% snapshot unique_customers_dim %}
+{% snapshot edw_customers_dim %}
 
 {{
     config(

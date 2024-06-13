@@ -1,4 +1,4 @@
-{% snapshot unique_products_dim %}
+{% snapshot edw_products_dim %}
 
 {{
     config(
@@ -9,6 +9,6 @@
     )
 }}
 
-select {{ dbt_utils.generate_surrogate_key(['product_code']) }} as product_key, * from {{ ref('products_stg') }}
+select {{ dbt_utils.generate_surrogate_key(['product_code',dbt_date.now()]) }} as product_key, * from {{ ref('products_stg') }}
 
 {% endsnapshot %}
